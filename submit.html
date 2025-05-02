@@ -11,6 +11,7 @@
       padding-top: 70px;
       background-color: #f9f9f9;
       transition: background 0.5s;
+      overflow: auto; /* keep doges contained */
     }
     nav {
       position: fixed; top: 0; left: 0; right: 0; height: 60px;
@@ -101,15 +102,12 @@
       color:#fff !important; font-size:20px; text-align:center;
     }
 
-    /* ─── Flying Doges ─── */
-    @keyframes dogeFly {
-      0%{transform:translateX(-150px)}100%{transform:translateX(110vw)}
-    }
+    /* ─── Bouncing Doges ─── */
     .doge {
-      position:fixed; left:0; width:80px;
-      pointer-events:none; z-index:2000;
-      animation-timing-function: linear;
-      animation-iteration-count: 1;
+      position: absolute;
+      width: 80px;
+      pointer-events: none;
+      z-index: 2000;
     }
   </style>
 </head>
@@ -164,13 +162,56 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      console.log('🚀 DOM loaded');
       const form = document.querySelector('form.rules-list');
       const res  = document.getElementById('results');
       const groupNames = ['litigate','pay_full','settlement'];
       const scanInputs = form.querySelectorAll('input[name="future_scans"]');
       const amountInput = document.getElementById('settlement_amount');
 
+      // Doge physics
+      const doges = [];
+      let animating = false;
+      function animateDoges() {
+        const W = window.innerWidth, H = window.innerHeight;
+        doges.forEach(d => {
+          d.x += d.vx;
+          d.y += d.vy;
+          // bounce
+          if (d.x < 0 || d.x + d.el.offsetWidth > W) d.vx *= -1;
+          if (d.y < 0 || d.y + d.el.offsetHeight > H) d.vy *= -1;
+          d.el.style.left = d.x + 'px';
+          d.el.style.top  = d.y + 'px';
+        });
+        requestAnimationFrame(animateDoges);
+      }
+
+      function spawnDoges(count) {
+        for (let i = 0; i < count; i++) {
+          const doge = document.createElement('img');
+          doge.src = 'images/dan.png';
+          doge.className = 'doge';
+          // random start
+          const x = Math.random() * (window.innerWidth - 80);
+          const y = Math.random() * (window.innerHeight - 80);
+          doge.style.left = x + 'px';
+          doge.style.top  = y + 'px';
+          document.body.appendChild(doge);
+          // assign random velocity
+          const speed = 2 + Math.random() * 3;
+          const angle = Math.random() * 2 * Math.PI;
+          doges.push({ el: doge, x, y, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed });
+        }
+        if (!animating) {
+          animating = true;
+          animateDoges();
+        }
+        // clean up after 15s
+        setTimeout(() => {
+          doges.splice(0, count).forEach(d => d.el.remove());
+        }, 15000);
+      }
+
+      // group/scan/amount logic
       function updateGroups() {
         const active = groupNames.find(n =>
           form.querySelector(`input[name="${n}"][value="yes"]`).checked
@@ -186,7 +227,6 @@
         amountInput.disabled = active!=='settlement';
         if(active!=='settlement') amountInput.value='';
       }
-
       groupNames.forEach(n=>{
         form.querySelectorAll(`input[name="${n}"]`)
             .forEach(r=>r.addEventListener('change', updateGroups));
@@ -195,15 +235,13 @@
 
       form.addEventListener('submit', e => {
         e.preventDefault();
-        console.log('✍️ Form submitted');
-        // gather
+        // gather inputs
         const lit  = form.elements['litigate'].value;
         const pay  = form.elements['pay_full'].value;
         const setl = form.elements['settlement'].value;
         const scans= form.elements['future_scans'].value;
         const xVal = parseFloat(amountInput.value);
         const chosen = [lit,pay,setl].filter(v=>v==='yes');
-
         if(chosen.length!==1){
           return alert('Select exactly one: Litigation, Pay in Full, or Settlement.');
         }
@@ -234,33 +272,21 @@
         // render results
         let html='<h2>Expected Values</h2><table><tr><th>Party</th><th>EV ($)</th></tr>';
         for(let p in ev){
-          const num=ev[p].toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
-          const cls=ev[p]<0?'negative':'positive';
+          const num = ev[p].toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+          const cls = ev[p]<0?'negative':'positive';
           html+=`<tr><td>${p}</td><td class="${cls}">${num}</td></tr>`;
         }
         html+='</table>';
-        res.innerHTML=html; res.style.display='block';
+        res.innerHTML=html;
+        res.style.display='block';
 
-        // ** Turbo Meme Mode **
-        console.log('🔥 Activating Turbo Meme Mode');
+        // Turbo Meme Mode
         document.body.classList.add('turbo-mode');
         res.querySelector('table').classList.add('turbo-table');
-
-        // Vine Boom
         new Audio('https://www.myinstants.com/media/sounds/vine-boom.mp3').play();
 
-        // Flying Doges
-        console.log('🐕‍🦺 Spawning Doges');
-        for(let i=0;i<7;i++){
-          const doge=document.createElement('img');
-          doge.src='https://media.giphy.com/media/4Zo41lhzKt6iZ8xff9/giphy.gif';
-          doge.className='doge';
-          doge.style.top=`${10+Math.random()*80}vh`;
-          doge.style.animationDuration=`${4+Math.random()*4}s`;
-          doge.style.animationDelay=`${Math.random()*1}s`;
-          document.body.appendChild(doge);
-          setTimeout(()=>doge.remove(), (5+Math.random()*3)*1000);
-        }
+        // spawn bouncing Doges
+        spawnDoges(7);
       });
     });
   </script>
