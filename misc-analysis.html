@@ -1,0 +1,895 @@
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding-top: 70px;
+        background-color: #f9f9f9;
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(8px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 40px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        z-index: 1000;
+    }
+
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 25px;
+    }
+
+    nav li {
+        display: inline;
+    }
+
+    .trumpcoin {
+        color: rgb(195, 178, 28);
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #333;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 10px 15px;
+        border-radius: 6px;
+        transition: all 0.25s ease;
+    }
+
+    nav a:hover {
+        background-color: #e0e0e0;
+        color: #000;
+    }
+
+    nav a.active {
+        background-color: #0066cc;
+        color: white;
+    }
+</style>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    h1, h2, h3 {
+        color: #333;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    .section {
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+    .positive {
+        color: green;
+    }
+    .negative {
+        color: red;
+    }
+    .trumpcoin {
+        color: rgb(195, 178, 28);
+    }
+    .note {
+        font-style: italic;
+        color: #666;
+        margin-top: 5px;
+    }
+    .calculation {
+        font-family: monospace;
+        background-color: #f5f5f5;
+        padding: 10px;
+        border-left: 3px solid #ccc;
+        margin: 10px 0;
+    }
+    nav ul {
+        list-style: none;
+        padding: 0;
+    }
+    nav li {
+        display: inline;
+        margin-right: 15px;
+    }
+    nav a {
+        text-decoration: none;
+        color: #0066cc;
+    }
+    nav a:hover {
+        text-decoration: underline;
+    }
+</style>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Case Introduction</a></li>
+            <li><a href="dramatis-personae.html">Dramatis Personae</a></li>
+            <li><a href="facts.html">Facts</a></li>
+            <li><a href="rules.html">Negotiation Rules</a></li>
+            <li><a href="misc-analysis.html">Misc Analysis</a></li>
+            <li><a href="nash.html">BATNA & ZOPA</a></li>
+            <li><a href="strategy.html">Negotiation Strategy</a></li>
+            <li><a href="submit.html">Submit Deal</a></li>
+        </ul>
+    </nav>
+
+<div class="section">
+    <h2>Possible Scenarios</h2>
+    <h3>Scenario 1: Geoff Pays the Full Amount Immediately</h3>
+    
+    <h4>Financial Impact for Geoff & Steph</h4>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Amount</th>
+            <th>Calculation</th>
+        </tr>
+        <tr>
+            <td>Immediate Payment</td>
+            <td class="negative">-$3,305</td>
+            <td>Deductible ($500) + Copay ($2,805)</td>
+        </tr>
+        <tr>
+            <td>Therapy Costs</td>
+            <td class="negative">-$200</td>
+            <td>Estimated therapy copay due to emotional impact</td>
+        </tr>
+        <tr>
+            <td>Future MRI Costs (2 more at cheaper Bloomington rate)</td>
+            <td class="negative">-$4,700</td>
+            <td>2 × $2,350</td>
+        </tr>
+        <tr>
+            <td>Steph's Trip to New Haven</td>
+            <td>$0</td>
+            <td>Trip proceeds as planned</td>
+        </tr>
+        <tr>
+            <td>Total Financial Impact</td>
+            <td class="negative">-$8,205</td>
+            <td>Sum of all financial impacts</td>
+        </tr>
+    </table>
+    <div class="calculation">
+        Total = -$3,305 - $200 - $4,700 = -$8,205
+    </div>
+
+    <h4>Financial Impact for Intellicorp</h4>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Amount</th>
+            <th>Calculation</th>
+        </tr>
+        <tr>
+            <td>Payment from Geoff</td>
+            <td class="positive">$3,305</td>
+            <td>Deductible + Copay</td>
+        </tr>
+        <tr>
+            <td>Payment from Insurance</td>
+            <td class="positive">$7,316</td>
+            <td>Insurance portion already received</td>
+        </tr>
+        <tr>
+            <td>Future MRI Revenue (2 more)</td>
+            <td class="positive">$0</td>
+            <td>Geoff will use Bloomington facility for future MRIs</td>
+        </tr>
+        <tr>
+            <td>Total Revenue</td>
+            <td class="positive">$10,621</td>
+            <td>Current payment + insurance payment</td>
+        </tr>
+    </table>
+    <div class="calculation">
+        Total = $3,305 + $7,316 + $0 = $10,621
+    </div>
+
+    <h4>Revenue Distribution for Intellicorp Employees</h4>
+    <table>
+        <tr>
+            <th>Recipient</th>
+            <th>Amount</th>
+            <th>Calculation</th>
+        </tr>
+        <tr>
+            <td>Intellicorp (Company)</td>
+            <td class="positive">$7,000</td>
+            <td>First $7,000 of the MRI</td>
+        </tr>
+        <tr>
+            <td>Heath Crair</td>
+            <td class="positive">$1,448.40</td>
+            <td>40% of revenue above $7,000</td>
+        </tr>
+        <tr>
+            <td>Aesculapius</td>
+            <td class="positive">$2,172.60</td>
+            <td>60% of revenue above $7,000</td>
+        </tr>
+    </table>
+    <div class="calculation">
+        Revenue above threshold = $10,621 - $7,000 = $3,621
+        Heath Crair = $3,621 × 40% = $1,448.40
+        Aesculapius = $3,621 × 60% = $2,172.60
+    </div>
+
+    <h3>Scenario 2: Geoff Litigates and Wins (70% probability according to Geoff)</h3>
+    
+    <h4>Financial Impact for Geoff & Steph</h4>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Amount</th>
+            <th>Calculation</th>
+        </tr>
+        <tr>
+            <td>Payment to Intellicorp</td>
+            <td>$0</td>
+            <td>No payment required if Geoff wins</td>
+        </tr>
+        <tr>
+            <td>Opportunity Cost (Litigation Time)</td>
+            <td class="negative">-$1,500</td>
+            <td>Lost income from taking time for litigation</td>
+        </tr>
+        <tr>
+            <td>Future MRI Costs at Alternative Location</td>
+            <td class="negative">-$4,700</td>
+            <td>2 × $2,350 at Bloomington location</td>
+        </tr>
+        <tr>
+            <td>Total Financial Impact</td>
+            <td class="negative">-$6,200</td>
+            <td>Sum of all financial impacts</td>
+        </tr>
+    </table>
+    <div class="calculation">
+        Total = $0 - $1,500 - $4,700 = -$6,200
+    </div>
+
+
+    <h4>Additional Financial Impact for Steph</h4>
+    <table>
+    <tr>
+        <td>Steph's Lost Trip</td>
+        <td class="trumpcoin">-$2,700</td>
+        <td>Non-refundable JetBlue ticket + hotel</td>
+    </tr>
+    <tr>
+        <td>Total Financial Impact for Steph</td>
+        <td class="negative">-$8,900</td>
+        <td>Sum of all financial impacts</td>
+    </tr>
+</table>
+
+    <h4>Financial Impact for Intellicorp</h4>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Amount</th>
+            <th>Calculation</th>
+        </tr>
+        <tr>
+            <td>Payment from Geoff</td>
+            <td>$0</td>
+            <td>No payment received if Geoff wins</td>
+        </tr>
+        <tr>
+            <td>Payment from Insurance</td>
+            <td class="positive">$7,316</td>
+            <td>Insurance portion already received</td>
+        </tr>
+        <tr>
+            <td>Future MRI Revenue</td>
+            <td>$0</td>
+            <td>No future business from Geoff</td>
+        </tr>
+        <tr>
+            <td>Litigation Deductible</td>
+            <td class="negative">-$800</td>
+            <td>Remaining deductible for litigation insurance</td>
+        </tr>
+        <tr>
+            <td>Litigation Copay</td>
+            <td class="negative">-$250</td>
+            <td>Copay for litigation insurance</td>
+        </tr>
+        <tr>
+            <td>Total Revenue</td>
+            <td class="positive">$6,266</td>
+            <td>Insurance payment - litigation costs</td>
+        </tr>
+    </table>
+    <div class="calculation">
+        Total = $7,316 - $800 - $250 = $6,266
+    </div>
+
+    <h4>Financial Impact for Intellicorp Employees</h4>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Amount</th>
+            <th>Calculation</th>
+        </tr>
+        <tr>
+            <td>Payment for Aesculapius</td>
+            <td>$0</td>
+            <td>No payment received because Intellicorp revenue below threshold</td>
+        </tr>
+        <tr>
+            <td>Payment for Heath</td>
+            <td>$0</td>
+            <td>No payment received because Intellicorp revenue below threshold</td>
+        </tr>
+    </table>
+
+    <h3>Scenario 3: Geoff Litigates and Loses (30% probability according to Geoff)</h3>
+    
+    <h4>Financial Impact for Geoff & Steph</h4>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Amount</th>
+            <th>Calculation</th>
+        </tr>
+        <tr>
+            <td>Payment to Intellicorp</td>
+            <td class="negative">-$4,367.10</td>
+            <td>Original amount + 10 weeks of late fees</td>
+        </tr>
+        <tr>
+            <td>Opportunity Cost (Litigation Time)</td>
+            <td class="negative">-$1,500</td>
+            <td>Lost income from taking time for litigation</td>
+        </tr>
+        <tr>
+            <td>Future MRI Costs at Alternative Location</td>
+            <td class="negative">-$4,700</td>
+            <td>2 × $2,350 at Bloomington location</td>
+        </tr>
+        <tr>
+            <td>Total Financial Impact</td>
+            <td class="negative">-$10,567.10</td>
+            <td>Sum of all financial impacts</td>
+        </tr>
+    </table>
+    <div class="calculation">
+        Late fees = 10 weeks × 1% × $10,621 = $1,062.10
+        Payment to Intellicorp = $3,305 + $1,062.10 = $4,367.10
+        Total = -$4,367.10 - $1,500 - $4,700 = -$10,567.10
+    </div>
+
+    <h4>Additional Financial Impact for Steph</h4>
+    <table>
+    <tr>
+        <td>Steph's Lost Trip</td>
+        <td class="trumpcoin">-$2,700</td>
+        <td>Non-refundable JetBlue ticket + hotel</td>
+    </tr>
+    <tr>
+        <td>Total Financial Impact for Steph</td>
+        <td class="negative">-$13,267.10</td>
+        <td>Sum of all financial impacts</td>
+    </tr>
+</table>
+
+    <h4>Financial Impact for Intellicorp</h4>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Amount</th>
+            <th>Calculation</th>
+        </tr>
+        <tr>
+            <td>Payment from Geoff</td>
+            <td class="positive">$4,367.10</td>
+            <td>Original amount + 10 weeks of late fees</td>
+        </tr>
+        <tr>
+            <td>Payment from Insurance</td>
+            <td class="positive">$7,316</td>
+            <td>Insurance portion already received</td>
+        </tr>
+        <tr>
+            <td>Future MRI Revenue</td>
+            <td>$0</td>
+            <td>No future business from Geoff</td>
+        </tr>
+        <tr>
+            <td>Litigation Deductible</td>
+            <td class="negative">-$800</td>
+            <td>Remaining deductible for litigation insurance</td>
+        </tr>
+        <tr>
+            <td>Litigation Copay</td>
+            <td class="negative">-$250</td>
+            <td>Copay for litigation insurance</td>
+        </tr>
+        <tr>
+            <td>Total Revenue</td>
+            <td class="positive">$10,633.10</td>
+            <td>Geoff payment + insurance payment - litigation costs</td>
+        </tr>
+    </table>
+    <div class="calculation">
+        Total = $4,367.10 + $7,316 - $800 - $250 = $10,633.10
+    </div>
+
+    <h4>Financial Impact for Intellicorp Employees</h4>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Amount</th>
+            <th>Calculation</th>
+        </tr>
+        <tr>
+            <td>Payment for Aesculapius</td>
+            <td class="positive">$168</td>
+            <td>50% of revenue from payment over $7,000 excluding late fees</td>
+        </tr>
+        <tr>
+            <td>Payment for Heath</td>
+            <td class="positive">$168</td>
+            <td>50% of revenue from payment over $7,000 excluding late fees</td>
+        </tr>
+    </table>
+    <div class="calculation">
+        Payment for each = $(7,316 - 7,000)/2 = $168
+    </div>
+
+    <h3>Scenario 4: Geoff Negotiates a Settlement Without Agreeing to Return to Intellicorp</h3>
+    
+    <h4>Financial Impact for Geoff & Steph (Assuming settlement at $x)</h4>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Amount</th>
+            <th>Calculation</th>
+        </tr>
+        <tr>
+            <td>Settlement Payment</td>
+            <td class="negative">-$x</td>
+            <td>Negotiated settlement amount</td>
+        </tr>
+        <tr>
+            <td>Future MRI Costs (2 more at settlement rate)</td>
+            <td class="negative"> -$4,700</td>
+            <td>cost of MRIs at Bloomington</td>
+        </tr>
+        <tr>
+            <td>Steph's Trip to New Haven</td>
+            <td>$0</td>
+            <td>Trip proceeds as planned</td>
+        </tr>
+        <tr>
+            <td>Total Financial Impact</td>
+            <td class="negative">-$x -$4,700 </td>
+            <td>Sum of all financial impacts</td>
+        </tr>
+    </table>
+    <div class="calculation">
+        Total = -$x -$4,700
+
+    </div>
+
+    <h4>Financial Impact for Intellicorp</h4>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Amount</th>
+            <th>Calculation</th>
+        </tr>
+        <tr>
+            <td>Settlement from Geoff</td>
+            <td class="positive">$x</td>
+            <td>Negotiated settlement amount</td>
+        </tr>
+        <tr>
+            <td>Payment from Insurance</td>
+            <td class="positive">$7,316</td>
+            <td>Insurance portion already received</td>
+        </tr>
+        <tr>
+            <td>Future MRI Revenue </td>
+            <td class="positive">$0</td>
+            <td>Geoff will not return</td>
+        </tr>
+        <tr>
+            <td>Total Revenue</td>
+            <td class="positive">$7,316 + $x</td>
+            <td>Settlement + insurance payment + future revenue</td>
+        </tr>
+    </table>
+    <div class="calculation">
+        Geoff uses Bloomington:
+        Total = $7,316 + $x + $0 = $7,316 + $x
+    </div>
+
+    <h4>Financial Impact for Intellicorp Employees</h4>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Amount</th>
+            <th>Calculation</th>
+        </tr>
+        <tr>
+            <td>Payment for Aesculapius</td>
+            <td class="positive">$158 + .5x</td>
+            <td>50% of revenue over $7,000</td>
+        </tr>
+        <tr>
+            <td>Payment for Heath</td>
+            <td class="positive">$158 + .5x</td>
+            <td>50% of revenue over $7,000</td>
+        </tr>
+    </table>
+    <div class="calculation">
+        Payment for each = (7,316 - 7000 + x)/2 = $2347.60
+    </div>
+
+
+
+    <h3>Scenario 5: Geoff Negotiates a Settlement and Agrees to Return to Intellicorp</h3>
+
+    <h4>Financial Impact for Geoff & Steph (Assuming settlement at $x)</h4>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Amount</th>
+            <th>Calculation</th>
+        </tr>
+        <tr>
+            <td>Settlement Payment</td>
+            <td class="negative">-$x</td>
+            <td>Negotiated settlement amount</td>
+        </tr>
+        <tr>
+            <td>Future MRI Costs (2 more at settlement rate)</td>
+            <td class="negative"> -$2x</td>
+            <td>cost of MRIs at Bloomington</td>
+        </tr>
+        <tr>
+            <td>Steph's Trip to New Haven</td>
+            <td>$0</td>
+            <td>Trip proceeds as planned</td>
+        </tr>
+        <tr>
+            <td>Total Financial Impact</td>
+            <td class="negative">-$3x </td>
+            <td>Sum of all financial impacts</td>
+        </tr>
+    </table>
+    <div class="calculation">
+        Total = -$3x
+
+    </div>
+
+    <h4>Financial Impact for Intellicorp</h4>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Amount</th>
+            <th>Calculation</th>
+        </tr>
+        <tr>
+            <td>Settlement from Geoff</td>
+            <td class="positive">$x</td>
+            <td>Negotiated settlement amount</td>
+        </tr>
+        <tr>
+            <td>Payment from Insurance</td>
+            <td class="positive">$7,316</td>
+            <td>Insurance portion already received</td>
+        </tr>
+        <tr>
+            <td>Future MRI Revenue </td>
+            <td class="positive">$14,632 + 2x</td>
+            <td>Geoff will not return</td>
+        </tr>
+        <tr>
+            <td>Total Revenue</td>
+            <td class="positive">$21,948 + 3x</td>
+            <td>Settlement + insurance payment + future revenue</td>
+        </tr>
+    </table>
+    <div class="calculation">
+        Geoff returns to Intellicorp:
+        Total = $7,316 + 14,632 + $3x = $21,948 + $3x
+    </div>
+
+    <h4>Financial Impact for Intellicorp Employees</h4>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Amount</th>
+            <th>Calculation</th>
+        </tr>
+        <tr>
+            <td>Payment for Aesculapius</td>
+            <td class="positive">$474 + 1.5x</td>
+            <td>50% of revenue over $7,000</td>
+        </tr>
+        <tr>
+            <td>Payment for Heath</td>
+            <td class="positive">$474 + 1.5x</td>
+            <td>50% of revenue over $7,000</td>
+        </tr>
+    </table>
+    <div class="calculation">
+        Payment for each = [(7,316 - 7000 + x) * 3]/2  = $474 + 1.5x
+    </div>
+
+
+
+</div>
+
+<div class="section">
+    <h2>Expected Value Calculations</h2>
+    
+    <h3>Expected Value for Geoff (Using Geoff's 70% win probability)</h3>
+    <table>
+        <tr>
+            <th>Scenario</th>
+            <th>Financial Impact</th>
+            <th>Probability</th>
+            <th>Expected Value</th>
+        </tr>
+        <tr>
+            <td>Pay in Full</td>
+            <td class="negative">-$8,205</td>
+            <td>100% if chosen</td>
+            <td class="negative">-$8,205</td>
+        </tr>
+        <tr>
+            <td>Litigate and Win</td>
+            <td class="negative">-$6,200</td>
+            <td>70% if litigation chosen</td>
+            <td class="negative">-$4,340</td>
+        </tr>
+        <tr>
+            <td>Litigate and Lose</td>
+            <td class="negative">-$10,567.10</td>
+            <td>30% if litigation chosen</td>
+            <td class="negative">-$3,170.13</td>
+        </tr>
+        <tr>
+            <td>Combined Litigation EV</td>
+            <td></td>
+            <td></td>
+            <td class="negative">-$7,510.13</td>
+        </tr>
+        <tr>
+            <td>Negotiate Settlement (No Return)</td>
+            <td class="negative">-$x - $4,700</td>
+            <td>100% if chosen</td>
+            <td class="negative">-$x - $4,700</td>
+        </tr>
+        <tr>
+            <td>Negotiate Settlement (Return)</td>
+            <td class="negative">-$3x</td>
+            <td>100% if chosen</td>
+            <td class="negative">-$3x</td>
+        </tr>
+    </table>
+    <div class="calculation">
+        EV (Litigate & Win) = -$6,200 × 0.7 = -$4,340
+        EV (Litigate & Lose) = -$10,567.10 × 0.3 = -$3,488.76
+        Combined Litigation EV = -$3,170.13 + (-$3,488.76) = -$7,510.13
+    </div>
+
+   
+        
+    <h3>Expected Value for Steph (Using Geoff's 70% win probability)</h3>
+    <table>
+        <tr>
+            <th>Scenario</th>
+            <th>Financial Impact</th>
+            <th>Probability</th>
+            <th>Expected Value</th>
+        </tr>
+        <tr>
+            <td>Pay in Full</td>
+            <td class="negative">-$8,205</td>
+            <td>100% if chosen</td>
+            <td class="negative">-$8,205</td>
+        </tr>
+        <tr>
+            <td>Litigate and Win</td>
+            <td class="negative">-$8,900</td>
+            <td>70% if litigation chosen</td>
+            <td class="negative">-$6,230</td>
+        </tr>
+        <tr>
+            <td>Litigate and Lose</td>
+            <td class="negative">-$13,267.10</td>
+            <td>30% if litigation chosen</td>
+            <td class="negative">-$3,980.13</td>
+        </tr>
+        <tr>
+            <td>Combined Litigation EV</td>
+            <td></td>
+            <td></td>
+            <td class="negative">-$10,210.13</td>
+        </tr>
+        <tr>
+            <td>Negotiate Settlement (No Return)</td>
+            <td class="negative">-$x - $4,700</td>
+            <td>100% if chosen</td>
+            <td class="negative">-$x - $4,700</td>
+        </tr>
+        <tr>
+            <td>Negotiate Settlement (Return)</td>
+            <td class="negative">-$3x</td>
+            <td>100% if chosen</td>
+            <td class="negative">-$3x</td>
+        </tr>
+    </table>
+    <div class="calculation">
+        EV (Litigate & Win) = -$8,900 × 0.7 = -$6,230
+        EV (Litigate & Lose) = -$13,267.10 × 0.3 = -$3,980.13
+        Combined Litigation EV = -$6,230 + (-$4,298.76) = -$10,210.13
+    </div>
+    
+
+    <h3>Expected Value for Intellicorp (Using their litigation probability of 90%)</h3>
+    <table>
+        <tr>
+            <th>Scenario</th>
+            <th>Financial Impact</th>
+            <th>Probability</th>
+            <th>Expected Value</th>
+        </tr>
+        <tr>
+            <td>Geoff Pays in Full</td>
+            <td class="positive">$10,621</td>
+            <td>100% if chosen</td>
+            <td class="positive">$10,621</td>
+        </tr>
+        <tr>
+            <td>Litigate and Win (Intellicorp loses)</td>
+            <td class="positive">$6,266</td>
+            <td>10% if litigation chosen</td>
+            <td class="positive">$626.60</td>
+        </tr>
+        <tr>
+            <td>Litigate and Lose (Intellicorp wins)</td>
+            <td class="positive">$10,633.10</td>
+            <td>90% if litigation chosen</td>
+            <td class="positive">$9,569.79</td>
+        </tr>
+        <tr>
+            <td>Combined Litigation EV</td>
+            <td></td>
+            <td></td>
+            <td class="positive">$10,196.39</td>
+        </tr>
+        <tr>
+            <td>Negotiate Settlement (No Return)</td>
+            <td class="positive">$7,316 + $x</td>
+            <td>100% if chosen</td>
+            <td class="positive">$7,316 + $x</td>
+        </tr>
+        <tr>
+            <td>Negotiate Settlement (Return)</td>
+            <td class="positive">$21,948 + $3x</td>
+            <td>100% if chosen</td>
+            <td class="positive">$21,948 + $3x</td>
+        </tr>
+    </table>
+    <div class="calculation">
+        EV (Litigate & Win for Intellicorp) = $10,633.10 × 0.9 = $9,569.79
+        EV (Litigate & Lose for Intellicorp) = $6,266 × 0.1 = $626.60
+        Combined Litigation EV = $10,525.68 + $626.60 = $10,196.39
+    </div>
+    <p class="note">For Intellicorp, having Geoff use them for future MRIs (if $x ≤ $2,350) is far better than all other options. A well negotiated settlement could be better than litigation ($11,152.28).</p>
+
+    <h3>Expected Value for Heath Crair</h3>
+    <table>
+        <tr>
+            <th>Scenario</th>
+            <th>Financial Impact</th>
+            <th>Notes</th>
+        </tr>
+        <tr>
+            <td>Geoff Pays in Full</td>
+            <td class="positive">$1,448.40</td>
+            <td>40% of revenue above $7,000</td>
+        </tr>
+        <tr>
+            <td>Settlement (No Return)</td>
+            <td class="positive">$158 + 0.5x</td>
+            <td>50% of revenue above $7,000</td>
+        </tr>
+        <tr>
+            <td>Settlement (Return)</td>
+            <td class="positive">$474 + 1.5x</td>
+            <td>50% of revenue above $7,000 for 3 MRIs</td>
+        </tr>
+        <tr>
+            <td>Litigation (Intellicorp Win)</td>
+            <td class="positive">$168 </td>
+            <td>50% of revenue from payment above $7,000 if Intellicorp wins</td>
+        </tr>
+        <tr>
+            <td>Litigation (Intellicorp Loss)</td>
+            <td> $0 </td>
+            <td>Threshold not met for payment</td>
+        </tr>
+        <tr>
+            <td>Litigation EV</td>
+            <td class="positive">$151.20</td>
+            <td>$168 × 0.9 + $0 × 0.1</td>
+        </tr>
+    </table>
+    
+    <h3>Expected Value for Aesculapius</h3>
+    <table>
+        <tr>
+            <th>Scenario</th>
+            <th>Financial Impact</th>
+            <th>Notes</th>
+        </tr>
+        <tr>
+            <td>Geoff Pays in Full</td>
+            <td class="positive">$2,172.60</td>
+            <td>60% of revenue above $7,000</td>
+        </tr>
+        <tr>
+            <td>Settlement (No Return)</td>
+            <td class="positive">$158 + 0.5x</td>
+            <td>50% of revenue above $7,000</td>
+        </tr>
+        <tr>
+            <td>Settlement (Return)</td>
+            <td class="positive">$474 + 1.5x</td>
+            <td>50% of revenue above $7,000 for 3 MRIs</td>
+        </tr>
+        <tr>
+            <td>Litigation (Intellicorp Win)</td>
+            <td class="positive">$168 </td>
+            <td>50% of revenue from payment above $7,000 if Intellicorp wins</td>
+        </tr>
+        <tr>
+            <td>Litigation (Intellicorp Loss)</td>
+            <td> $0 </td>
+            <td>Threshold not met for payment</td>
+        </tr>
+        <tr>
+            <td>Litigation EV</td>
+            <td class="positive">$151.20</td>
+            <td>$168 × 0.9 + $0 × 0.1</td>
+        </tr>
+    </table>
+</div>
+
+
+</div>
+</body>

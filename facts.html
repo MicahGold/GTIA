@@ -1,0 +1,290 @@
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding-top: 70px;
+        background-color: #f9f9f9;
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(8px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 40px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        z-index: 1000;
+    }
+
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 25px;
+    }
+
+    nav li {
+        display: inline;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #333;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 10px 15px;
+        border-radius: 6px;
+        transition: all 0.25s ease;
+    }
+
+    nav a:hover {
+        background-color: #e0e0e0;
+        color: #000;
+    }
+
+    nav a.active {
+        background-color: #0066cc;
+        color: white;
+    }
+</style>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Case Introduction</a></li>
+            <li><a href="dramatis-personae.html">Dramatis Personae</a></li>
+            <li><a href="facts.html">Facts</a></li>
+            <li><a href="rules.html">Negotiation Rules</a></li>
+            <li><a href="misc-analysis.html">Misc Analysis</a></li>
+            <li><a href="nash.html">BATNA & ZOPA</a></li>
+            <li><a href="strategy.html">Negotiation Strategy</a></li>
+            <li><a href="submit.html">Submit Deal</a></li>
+        </ul>
+    </nav>
+
+
+
+
+
+
+
+
+
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    h1, h2, h3 {
+        color: #333;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    .section {
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+    .positive {
+        color: green;
+    }
+    .negative {
+        color: red;
+    }
+    .trumpcoin {
+        color: rgb(195, 178, 28);
+    }
+    .note {
+        font-style: italic;
+        color: #666;
+        margin-top: 5px;
+    }
+    .calculation {
+        font-family: monospace;
+        background-color: #f5f5f5;
+        padding: 10px;
+        border-left: 3px solid #ccc;
+        margin: 10px 0;
+    }
+    nav ul {
+        list-style: none;
+        padding: 0;
+    }
+    nav li {
+        display: inline;
+        margin-right: 15px;
+    }
+    nav a {
+        text-decoration: none;
+        color: #0066cc;
+    }
+    nav a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+
+
+<div class="section">
+    <h2>Initial Medical and Financial Parameters</h2>
+    <table>
+        <tr>
+            <th>Parameter</th>
+            <th>Value</th>
+            <th>Notes</th>
+        </tr>
+        <!-- Initial Parameters -->
+        <tr>
+            <td>Original MRI Bill</td>
+            <td>$22,000</td>
+            <td>Original charge from Intellicorp</td>
+        </tr>
+        <tr>
+            <td>Insurance Negotiated Price</td>
+            <td>$10,621</td>
+            <td>Amount after Blue Shield negotiation</td>
+        </tr>
+        <tr>
+            <td>Cash Price for Uninsured</td>
+            <td>$7,000</td>
+            <td>Price offered to uninsured patients</td>
+        </tr>
+        <tr>
+            <td>Insurance Payment</td>
+            <td>$7,316</td>
+            <td>Amount Blue Shield paid (Negotiated price - Deductible - Copay)</td>
+        </tr>
+        <tr>
+            <td>Geoff's Deductible</td>
+            <td>$500</td>
+            <td>Amount Geoff is responsible for as deductible</td>
+        </tr>
+        <tr>
+            <td>Geoff's Copay</td>
+            <td>$2,805</td>
+            <td>Amount Geoff is responsible for as copay</td>
+        </tr>
+        <tr>
+            <td>Total Geoff Owes</td>
+            <td>$3,305</td>
+            <td>Deductible + Copay</td>
+        </tr>
+        <tr>
+            <td>MRIs Needed</td>
+            <td>3 total (including first)</td>
+            <td>Expected number of MRIs for Geoff's condition</td>
+        </tr>
+    </table>
+</div>
+
+<div class="section">
+    <h2>Litigation-Related Parameters</h2>
+    <table>
+        <tr>
+            <th>Parameter</th>
+            <th>Value</th>
+            <th>Notes</th>
+        </tr>
+        <!-- Litigation Parameters -->
+        <tr>
+            <td>Late Fee Rate</td>
+            <td>1% per week</td>
+            <td>Applied to the $10,621 insurance-negotiated amount</td>
+        </tr>
+        <tr>
+            <td>Weekly Late Fee</td>
+            <td class="negative">-$106.21</td>
+            <td>2% of $10,621</td>
+        </tr>
+        <tr>
+            <td>Expected Case Duration</td>
+            <td>10 weeks maximum</td>
+            <td>Geoff's estimate for litigation timeline</td>
+        </tr>
+        <tr>
+            <td>Intellicorp Litigation Insurance Deductible Remaining</td>
+            <td class="negative">-$800</td>
+            <td>Amount Intellicorp must pay should Geoff sue</td>
+        </tr>
+        <tr>
+            <td>Intellicorp Litigation Insurance Copay</td>
+            <td class="negative">-$250</td>
+            <td>Intellicorp's copay for legal representation</td>
+        </tr>
+       
+        <tr>
+            <td>Intellicorp's Litigation Success Probability</td>
+            <td>90%</td>
+            <td>Intellicorp's estimate of winning in court</td>
+        </tr>
+        <tr>
+            <td>Geoff's Litigation Success Probability</td>
+            <td>70%</td>
+            <td>Geoff's estimate of winning in court</td>
+        </tr>
+        <tr>
+            <td>Geoff's Opportunity Cost</td>
+            <td class="negative">-$1,500</td>
+            <td>Lost income from taking time off to litigate</td>
+        </tr>
+        <tr>
+            <td>Geoff's Potential Therapy Cost</td>
+            <td class="negative">-$200</td>
+            <td>Additional therapy copay if Geoff pays without litigation</td>
+        </tr>
+        <tr>
+            <td>Alternative MRI Location Cost</td>
+            <td class="negative">-$2,350</td>
+            <td>Out-of-pocket cost + elevated travel expenses of an MRI at the Bloomington location</td>
+        </tr>
+        <tr>
+            <td>Steph's Non-Refundable Ticket</td>
+            <td class="trumpcoin">-$2,700</td>
+            <td>Cost of canceled JetBlue ticket if litigation proceeds</td>
+        </tr>
+    </table>
+</div>
+
+<div class="section">
+    <h2>Intellicorp Revenue Distribution</h2>
+    <table>
+        <tr>
+            <th>Revenue Bracket</th>
+            <th>Distribution</th>
+        </tr>
+        <tr>
+            <td>First $7,000 (after litigation expenses)</td>
+            <td>100% to Intellicorp</td>
+        </tr>
+        <tr>
+            <td>Every Dollar After $7,000</td>
+            <td>50% to Heath Crair, 50% to Aesculapius</td>
+        </tr>
+        <tr>
+            <td>Alternative Scheme</td>
+            <td>40% to Heath Crair, 60% to Aesculapius on every dollar above $7000 if client pays initial bill</td>
+        </tr>
+    </table>
+</div>
+

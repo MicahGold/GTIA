@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Negotiation Rules - Intellicorp Dispute</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding-top: 70px;
+            background-color: #f9f9f9;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 6px;
+            transition: all 0.25s ease;
+        }
+
+        nav a:hover {
+            background-color: #e0e0e0;
+            color: #000;
+        }
+
+        nav a.active {
+            background-color: #0066cc;
+            color: white;
+        }
+
+        .section {
+            margin: 40px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        ul.rules-list {
+            padding-left: 20px;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        ul.rules-list li {
+            margin-bottom: 10px;
+        }
+
+        .image-box {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .image-box img {
+            width: 100%;
+            max-width: 250px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .image-box p {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a href="index.html">Case Introduction</a></li>
+        <li><a href="dramatis-personae.html">Dramatis Personae</a></li>
+        <li><a href="facts.html">Facts</a></li>
+        <li><a href="rules.html">Negotiation Rules</a></li>
+        <li><a href="misc-analysis.html">Misc Analysis</a></li>
+        <li><a href="nash.html">BATNA & ZOPA</a></li>
+        <li><a href="strategy.html">Negotiation Strategy</a></li>
+        <li><a href="submit.html">Submit Deal</a></li>
+    </ul>
+</nav>
+
+<div class="section">
+    <h2>Rules</h2>
+    <ul class="rules-list">
+        <li>Geoff can only speak to Steph.</li>
+        <li>Steph can only speak to Asclepaius and Geoff.</li>
+        <li>Asclepaius can speak to Heath or Steph.</li>
+        <li>Heath can only speak to Asclepaius.</li>
+        <li>Only Heath is authorized to adjust the billing terms.</li>
+        <li>Once Asclepaius speaks with Heath about the case, he can no longer get his bonus.</li>
+        <li>Geoff gets the final say on whether to litigate.</li>
+        <li>Heath gets the final say on whether to accept settlement terms.</li>
+    </ul>
+
+    <div class="image-box">
+        <div>
+            <img src="images/scuffed.png" alt="Communication Diagram">
+            <p><strong>Communication Rules</strong></p>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>
