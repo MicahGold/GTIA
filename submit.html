@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <title>Negotiation Rules - Intellicorp Dispute</title>
   <style>
+    /* ─── Base Styles ─── */
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding-top: 70px;
       background-color: #f9f9f9;
+      transition: background 0.5s;
     }
     nav {
       position: fixed; top: 0; left: 0; right: 0; height: 60px;
@@ -18,51 +20,97 @@
       padding: 0 40px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.06);
       z-index: 1000;
+      transition: background 0.5s, box-shadow 0.5s;
     }
     nav ul { list-style: none; margin:0; padding:0; display:flex; gap:25px; }
     nav a {
-      text-decoration: none; color:#333; font-size:16px; font-weight:500;
-      padding:10px 15px; border-radius:6px; transition:background-color 0.25s;
+      text-decoration:none; color:#333; font-size:16px; font-weight:500;
+      padding:10px 15px; border-radius:6px; transition:background-color .25s;
     }
-    nav a:hover { background-color:#e0e0e0; color:#000 }
-    nav a.active { background-color:#0066cc; color:#fff }
+    nav a:hover { background-color:#e0e0e0; }
+    nav a.active { background-color:#0066cc; color:#fff; }
 
     .section {
-      margin: 40px; background:#fff; padding:30px;
+      margin:40px; background:#fff; padding:30px;
       border-radius:12px; box-shadow:0 4px 16px rgba(0,0,0,0.05);
+      transition: background 0.5s, box-shadow 0.5s, border 0.5s;
     }
+    h2 { color:#333; font-size:28px; margin-bottom:20px; transition: color 0.5s; }
 
-    h2 { color:#333; font-size:28px; margin-bottom:20px }
-
-    form.rules-list { line-height:1.8; color:#444 }
-    .rules-list label { display:block; margin-bottom:12px }
-    .nested { margin-left:20px }
-    .input-box { margin:20px 0 }
+    form.rules-list { line-height:1.8; color:#444; }
+    .rules-list label { display:block; margin-bottom:12px; }
+    .nested { margin-left:20px; }
+    .input-box { margin:20px 0; }
     .input-box input[type="number"] {
       padding:8px; font-size:16px; border:1px solid #ccc;
-      border-radius:6px; width:200px;
+      border-radius:6px; width:200px; transition: background 0.5s;
     }
-    .input-box input:disabled {
-      background-color: #eee;
-    }
+    .input-box input:disabled { background-color:#eee; }
     .submit-btn button {
       background-color:#0066cc; color:#fff; padding:10px 20px;
       font-size:16px; border:none; border-radius:6px; cursor:pointer;
-      transition:background-color 0.3s;
+      transition:background-color .3s;
     }
-    .submit-btn button:hover { background-color:#004a99 }
+    .submit-btn button:hover { background-color:#004a99; }
 
-    /* Results */
-    #results { display:none }
+    #results { display:none; transition: opacity 0.5s; }
     #results table {
       width:100%; border-collapse:collapse; margin-top:20px;
+      transition: transform 0.5s;
     }
     #results th, #results td {
       border:1px solid #ddd; padding:8px; text-align:left;
     }
-    #results th { background:#f2f2f2; font-weight:bold }
-    .positive { color:green }
-    .negative { color:red }
+    #results th { background:#f2f2f2; font-weight:bold; }
+    .positive { color:green; }
+    .negative { color:red; }
+
+    /* ─── Turbo Meme Mode ─── */
+    @keyframes spinZoom { 0%{transform:scale(1)rotate(0)}50%{transform:scale(1.2)rotate(360deg)}100%{transform:scale(1)rotate(720deg)}}
+    @keyframes rainbowBorder {
+      0%{border-color:red}25%{border-color:yellow}50%{border-color:lime}75%{border-color:blue}100%{border-color:magenta}
+    }
+    .turbo-mode {
+      background: radial-gradient(circle at center, #ff00ff, #00ffff) !important;
+      font-family:Impact, Charcoal, sans-serif !important;
+    }
+    .turbo-mode nav {
+      background: rgba(0,0,0,0.6) !important;
+      box-shadow:0 0 20px 5px #00ff00 !important;
+    }
+    .turbo-mode nav a {
+      color: #00ff00 !important;
+      text-shadow:1px 1px 2px black;
+    }
+    .turbo-mode .section {
+      background: rgba(255,0,255,0.2) !important;
+      border: 4px dashed yellow !important;
+      box-shadow:0 0 30px 8px #ffff00 !important;
+    }
+    .turbo-mode h2 {
+      color: yellow !important;
+      animation: spinZoom 1.5s ease-in-out infinite;
+      text-shadow:2px 2px 5px black;
+    }
+    .turbo-table {
+      border:6px solid red !important;
+      animation:rainbowBorder 1.5s infinite !important;
+      background-color:rgba(0,0,0,0.8) !important;
+    }
+    .turbo-table th, .turbo-table td {
+      color:#fff !important; font-size:20px; text-align:center;
+    }
+
+    /* ─── Flying Doges ─── */
+    @keyframes dogeFly {
+      0%{transform:translateX(-150px)}100%{transform:translateX(110vw)}
+    }
+    .doge {
+      position:fixed; left:0; width:80px;
+      pointer-events:none; z-index:2000;
+      animation-timing-function: linear;
+      animation-iteration-count: 1;
+    }
   </style>
 </head>
 <body>
@@ -83,37 +131,29 @@
   <div class="section">
     <h2>Deal Terms</h2>
     <form class="rules-list" action="#" method="POST">
-      <label>
-        <strong>Litigate:</strong><br>
+      <label><strong>Litigate:</strong><br>
         <input type="radio" name="litigate" value="yes"> Yes
         <input type="radio" name="litigate" value="no"> No
       </label>
-
-      <label>
-        <strong>Pay in Full:</strong><br>
+      <label><strong>Pay in Full:</strong><br>
         <input type="radio" name="pay_full" value="yes"> Yes
         <input type="radio" name="pay_full" value="no"> No
       </label>
-
-      <label>
-        <strong>Settlement:</strong><br>
+      <label><strong>Settlement:</strong><br>
         <input type="radio" name="settlement" value="yes"> Yes
         <input type="radio" name="settlement" value="no"> No
       </label>
-
       <div class="nested">
         <label>
-          Geoff commits to have two future MRI scans at Intellicorp for same price:<br>
+          Geoff commits to two future MRI scans at Intellicorp for same price:<br>
           <input type="radio" name="future_scans" value="yes"> Yes
           <input type="radio" name="future_scans" value="no"> No
         </label>
       </div>
-
       <div class="input-box">
         <label for="settlement_amount"><strong>Settlement Amount Offered ($):</strong></label><br>
         <input type="number" name="settlement_amount" id="settlement_amount" placeholder="e.g., 3500">
       </div>
-
       <div class="submit-btn">
         <button type="submit">Submit Terms</button>
       </div>
@@ -124,105 +164,103 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      console.log('🚀 DOM loaded');
       const form = document.querySelector('form.rules-list');
+      const res  = document.getElementById('results');
       const groupNames = ['litigate','pay_full','settlement'];
       const scanInputs = form.querySelectorAll('input[name="future_scans"]');
       const amountInput = document.getElementById('settlement_amount');
 
       function updateGroups() {
-        // determine which main choice is yes
-        const active = groupNames.find(name =>
-          form.querySelector(`input[name="${name}"][value="yes"]`).checked
+        const active = groupNames.find(n =>
+          form.querySelector(`input[name="${n}"][value="yes"]`).checked
         ) || null;
-
-        // disable other two groups
-        groupNames.forEach(name => {
-          form.querySelectorAll(`input[name="${name}"]`).forEach(inp => {
-            inp.disabled = !!active && name !== active;
+        groupNames.forEach(n => {
+          form.querySelectorAll(`input[name="${n}"]`).forEach(i=>{
+            i.disabled = !!active && n!==active;
           });
         });
-
-        // scans only enabled for Settlement
-        const scansEnabled = (active === 'settlement');
-        scanInputs.forEach(inp => inp.disabled = !scansEnabled);
-
-        // if Settlement ≠ yes, auto-set scans to no
-        if (!scansEnabled) {
-          const noScan = form.querySelector('input[name="future_scans"][value="no"]');
-          if (noScan) noScan.checked = true;
-        }
-
-        // settlement amount only enabled for Settlement
-        if (active === 'settlement') {
-          amountInput.disabled = false;
-        } else {
-          amountInput.disabled = true;
-          amountInput.value = '';
-        }
+        const scanOk = active==='settlement';
+        scanInputs.forEach(i=>i.disabled=!scanOk);
+        if(!scanOk) form.querySelector('input[name="future_scans"][value="no"]').checked=true;
+        amountInput.disabled = active!=='settlement';
+        if(active!=='settlement') amountInput.value='';
       }
 
-      // attach listeners
-      groupNames.forEach(name => {
-        form.querySelectorAll(`input[name="${name}"]`).forEach(radio =>
-          radio.addEventListener('change', updateGroups)
-        );
+      groupNames.forEach(n=>{
+        form.querySelectorAll(`input[name="${n}"]`)
+            .forEach(r=>r.addEventListener('change', updateGroups));
       });
-      updateGroups();  // initial state
+      updateGroups();
 
-      // on submit compute EVs & render
       form.addEventListener('submit', e => {
         e.preventDefault();
-        const lit = form.elements['litigate'].value;
-        const pay = form.elements['pay_full'].value;
+        console.log('✍️ Form submitted');
+        // gather
+        const lit  = form.elements['litigate'].value;
+        const pay  = form.elements['pay_full'].value;
         const setl = form.elements['settlement'].value;
-        const scans = form.elements['future_scans'].value;
+        const scans= form.elements['future_scans'].value;
         const xVal = parseFloat(amountInput.value);
         const chosen = [lit,pay,setl].filter(v=>v==='yes');
 
-        if (chosen.length!==1)
-          return alert('Select exactly one of Litigation, Pay in Full, or Settlement.');
-        if (setl==='yes' && isNaN(xVal))
+        if(chosen.length!==1){
+          return alert('Select exactly one: Litigation, Pay in Full, or Settlement.');
+        }
+        if(setl==='yes' && isNaN(xVal)){
           return alert('Enter a settlement amount.');
+        }
 
+        // compute EVs
         const ev = {};
-        if (setl==='yes') {
-          if (scans==='yes') {
-            ev.Geoff        = -3*xVal;
-            ev.Steph        = -3*xVal;
-            ev.Intellicorp  = 21948+3*xVal;
-            ev.Heath        = 474+1.5*xVal;
-            ev.Aesculapius  = 474+1.5*xVal;
+        if(setl==='yes'){
+          if(scans==='yes'){
+            ev.Geoff= -3*xVal; ev.Steph= -3*xVal;
+            ev.Intellicorp=21948+3*xVal;
+            ev.Heath=474+1.5*xVal; ev.Aesculapius=474+1.5*xVal;
           } else {
-            ev.Geoff        = -xVal-4700;
-            ev.Steph        = -xVal-4700;
-            ev.Intellicorp  = 7316+xVal;
-            ev.Heath        = 158+0.5*xVal;
-            ev.Aesculapius  = 158+0.5*xVal;
+            ev.Geoff= -xVal-4700; ev.Steph= -xVal-4700;
+            ev.Intellicorp=7316+xVal;
+            ev.Heath=158+0.5*xVal; ev.Aesculapius=158+0.5*xVal;
           }
-        } else if (pay==='yes') {
-          ev.Geoff       = -8205;
-          ev.Steph       = -8205;
-          ev.Intellicorp = 10621;
-          ev.Heath       = 1448.40;
-          ev.Aesculapius = 2172.60;
+        } else if(pay==='yes'){
+          ev.Geoff=-8205; ev.Steph=-8205;
+          ev.Intellicorp=10621; ev.Heath=1448.40; ev.Aesculapius=2172.60;
         } else {
-          ev.Geoff       = -7510.13;
-          ev.Steph       = -10210.13;
-          ev.Intellicorp = 10196.39;
-          ev.Heath       = 151.20;
-          ev.Aesculapius = 151.20;
+          ev.Geoff=-7510.13; ev.Steph=-10210.13;
+          ev.Intellicorp=10196.39; ev.Heath=151.20; ev.Aesculapius=151.20;
         }
 
-        const res = document.getElementById('results');
-        let html = '<h2>Expected Values</h2><table><tr><th>Party</th><th>EV ($)</th></tr>';
-        for (let p in ev) {
-          const num = ev[p].toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
-          const cls = ev[p]<0 ? 'negative':'positive';
-          html += `<tr><td>${p}</td><td class="${cls}">${num}</td></tr>`;
+        // render results
+        let html='<h2>Expected Values</h2><table><tr><th>Party</th><th>EV ($)</th></tr>';
+        for(let p in ev){
+          const num=ev[p].toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+          const cls=ev[p]<0?'negative':'positive';
+          html+=`<tr><td>${p}</td><td class="${cls}">${num}</td></tr>`;
         }
-        html += '</table>';
-        res.innerHTML = html;
-        res.style.display = 'block';
+        html+='</table>';
+        res.innerHTML=html; res.style.display='block';
+
+        // ** Turbo Meme Mode **
+        console.log('🔥 Activating Turbo Meme Mode');
+        document.body.classList.add('turbo-mode');
+        res.querySelector('table').classList.add('turbo-table');
+
+        // Vine Boom
+        new Audio('https://www.myinstants.com/media/sounds/vine-boom.mp3').play();
+
+        // Flying Doges
+        console.log('🐕‍🦺 Spawning Doges');
+        for(let i=0;i<7;i++){
+          const doge=document.createElement('img');
+          doge.src='https://media.giphy.com/media/4Zo41lhzKt6iZ8xff9/giphy.gif';
+          doge.className='doge';
+          doge.style.top=`${10+Math.random()*80}vh`;
+          doge.style.animationDuration=`${4+Math.random()*4}s`;
+          doge.style.animationDelay=`${Math.random()*1}s`;
+          document.body.appendChild(doge);
+          setTimeout(()=>doge.remove(), (5+Math.random()*3)*1000);
+        }
       });
     });
   </script>
