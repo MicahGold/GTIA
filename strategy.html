@@ -1,166 +1,162 @@
-<style>
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        margin: 0;
-        padding-top: 70px;
-        background-color: #f9f9f9;
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Negotiation Strategy for Steph</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-top: 30px;
+        }
+        .strategy-section {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+        }
+        .tactic {
+            margin-bottom: 20px;
+        }
+        .concession {
+            background-color: #f0f7fb;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            z-index: 1000;
+        }
 
-    nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 60px;
-        background: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(8px);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 40px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-        z-index: 1000;
-    }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 25px;
+        }
 
-    nav ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        gap: 25px;
-    }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 6px;
+            transition: all 0.25s ease;
+        }
 
-    nav li {
-        display: inline;
-    }
+        nav a:hover {
+            background-color: #e0e0e0;
+            color: #000;
+        }
 
-    nav a {
-        text-decoration: none;
-        color: #333;
-        font-size: 16px;
-        font-weight: 500;
-        padding: 10px 15px;
-        border-radius: 6px;
-        transition: all 0.25s ease;
-    }
+        nav a.active {
+            background-color: #0066cc;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+  <nav>
+    <ul>
+        <li><a href="index.html">Case Introduction</a></li>
+        <li><a href="dramatis-personae.html">Dramatis Personae</a></li>
+        <li><a href="facts.html">Facts</a></li>
+        <li><a href="rules.html">Negotiation Rules</a></li>
+        <li><a href="misc-analysis.html">Misc Analysis</a></li>
+        <li><a href="nash.html">BATNA & ZOPA</a></li>
+        <li><a href="strategy.html">Negotiation Strategy</a></li>
+        <li><a href="submit.html">Submit Deal</a></li>
+        <li><a href="insight.html">Insights</a></li>
+    </ul>
+</nav>
+    <h1>Negotiation Strategy for Steph</h1>
+    
+    <div class="strategy-section">
+        <h2>Negotiating with Geoff</h2>
+        <p>Before Steph can negotiate with Intellicorp, she must make sure she and Geoff are on the same page. Only Geoff can make the final decision about whether to pay Intellicorp a negotiated rate or litigate. Steph knows that Geoff's litigation EV is significantly better than her own. She must devise a negotiation strategy that limits concessions (as always), but she must also be careful to avoid the portion of the deal landscape (any payment +$2503.38) where a deal with Intellicorp would be better for her than litigation, but worse for Geoff (as Geoff would be highly unlikely to approve such a plan as it is worse than his BATNA).</p>
+        
+        <p>Steph should encourage Geoff to focus on his own legal work and physical recovery. She should remind him of her own expertise as a lawyer and negotiator. She should ask Geoff to set a negotiation target, which Geoff will find fun and engaging. Geoff will likely set an aggressive target and have a positive effect on Steph's negotiation. Steph should also refrain from antagonizing Geoff and steer clear of criticizing his nose hair plumage.</p>
+    </div>
 
-    nav a:hover {
-        background-color: #e0e0e0;
-        color: #000;
-    }
+    <div class="strategy-section">
+        <h2>Negotiating with Intellicorp</h2>
+        
+        <h3>Anchor</h3>
+        <p>The bill Steph received is an implicit anchor. Taking a page out of Voss, she should simply ignore the anchor and offer a $0 settlement right out the gate. Steph can easily justify this anchor – had Geoff walked in and paid cash, the bill would only have been $7,000. Intellicorp has already been paid $7,316, more than they would otherwise have received. Although Steph cannot know the Intellicorp employees' incentive structure and EV calculus, this would also incidentally "put them in the blender" as their RP is a $0 settlement.</p>
+        
+        <div class="tactic">
+            <h3>Tactic #1: Express Indignation</h3>
+            <p>Steph should sound insulted when she phones Intellicorp. Specifically, she should reprimand them for trying to charge exorbitant late fees and for setting an asking price well above the cash price. She knows that Intellicorp is likely to want Geoff to return as a client. She should force them onto the backfoot and make them give concessions early to retain Geoff as a client.</p>
+        </div>
+        
+        <div class="tactic">
+            <h3>Tactic #2: Appeal to Sympathy</h3>
+            <p>Steph should be willing to play the sympathy card to appeal to the Intellicorp employees. Her husband has a rare disease that has upended their lives. She should use carefully phrased questions to make Aesculapius and Heath identify themselves with her and Geoff. In particular, she should rely on Cialdini's unity principle and frame them as disadvantaged by corporate greed. She should, however, take care not to sound desperate and should mention that while Intellicorp provides a valuable service, there are many other clinics across the country (Steph and Geoff are not even located in SF, so the marginal utility of Intellicorp is reduced).</p>
+        </div>
+        
+        <div class="tactic">
+            <h3>Tactic #3: Leverage Reputation</h3>
+            <p>Steph should use her reputation and her husband's reputation to her advantage. Geoff is a feared lawyer who takes pleasure in making the other side squirm. Steph should not wield the threat of lawsuit like a cudgel; she must not alienate Aesculapius and Heath. However, Steph should make it clear that they are willing to litigate if need be.</p>
+        </div>
+    </div>
 
-    nav a.active {
-        background-color: #0066cc;
-        color: white;
-    }
-</style>
-
-    <nav>
-        <ul>
-            <li><a href="index.html">Case Introduction</a></li>
-            <li><a href="dramatis-personae.html">Dramatis Personae</a></li>
-            <li><a href="facts.html">Facts</a></li>
-            <li><a href="rules.html">Negotiation Rules</a></li>
-            <li><a href="misc-analysis.html">Misc Analysis</a></li>
-            <li><a href="nash.html">BATNA & ZOPA</a></li>
-            <li><a href="strategy.html">Negotiation Strategy</a></li>
-            <li><a href="submit.html">Submit Deal</a></li>
-        </ul>
-    </nav>
-
-
-
-
-
-
-
-
-
-
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-    }
-    h1, h2, h3 {
-        color: #333;
-    }
-    table {
-        border-collapse: collapse;
-        width: 100%;
-        margin-bottom: 20px;
-    }
-    th, td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: left;
-    }
-    th {
-        background-color: #f2f2f2;
-        font-weight: bold;
-    }
-    tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
-    .section {
-        margin-top: 30px;
-        margin-bottom: 20px;
-    }
-    .positive {
-        color: green;
-    }
-    .negative {
-        color: red;
-    }
-    .trumpcoin {
-        color: rgb(195, 178, 28);
-    }
-    .note {
-        font-style: italic;
-        color: #666;
-        margin-top: 5px;
-    }
-    .calculation {
-        font-family: monospace;
-        background-color: #f5f5f5;
-        padding: 10px;
-        border-left: 3px solid #ccc;
-        margin: 10px 0;
-    }
-    nav ul {
-        list-style: none;
-        padding: 0;
-    }
-    nav li {
-        display: inline;
-        margin-right: 15px;
-    }
-    nav a {
-        text-decoration: none;
-        color: #0066cc;
-    }
-    nav a:hover {
-        text-decoration: underline;
-    }
-    @keyframes rainbow-rotate {
-  0%   { filter: hue-rotate(0deg); }
-  100% { filter: hue-rotate(360deg); }
-}
-
-.danny-boy {
-  font-family: "Comic Sans MS", ComicSans, cursive;
-  font-size: 6rem;               /* huge! */
-  text-align: center;
-  margin: 20px 0;
-  animation: rainbow-rotate 3s linear infinite;
-  /* also give it a fill of bright neon colors */
-  background: linear-gradient(45deg,
-    #ff00cc, #00ffcc, #cc00ff, #ffcc00, #00ccff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-</style>
-
-<div class="danny-boy">
-    lmao not doing this part of the assignment danny boy
-  </div>
+    <div class="strategy-section">
+        <h2>Concession Strategy</h2>
+        <p>Steph should only make concessions once she is certain she is talking to a party authorized to negotiate with her (this is a Vossian counter-tactic). Steph should demand to speak to Aesculapius's manager as soon as possible. Incidentally this will disabuse Aesculapius of any notion that they will be paying in full.</p>
+        
+        <p>Steph should try not to make the first concession. After using the tactics described above, and squeezing out a preliminary concession from Intellicorp, Steph should follow the "Ackerman" model:</p>
+        
+        <div class="concession">
+            <h3>Concession #1</h3>
+            <p>Steph should offer to pay 40% of the target set by Geoff.</p>
+        </div>
+        
+        <div class="concession">
+            <h3>Concession #2</h3>
+            <p>Steph should offer to pay 65% of the target set by Geoff. She should mention that at this price they would be able to avoid subsequent treatments at Intellicorp. If Heath refuses and they reach an impasse, she should say she'll consult with her husband and hang up.</p>
+        </div>
+        
+        <div class="concession">
+            <h3>Concession #3</h3>
+            <p>Steph should offer to pay 75% of the target set by Geoff. She should also offer to pay by bank transfer within the day, to return to Intellicorp for future treatments, and promise to leave a favorable review on their Google Reviews page. By offering a non-monetary favor Intellicorp didn't ask for (a classic Vossian jab), she will implicitly express to Intellicorp that she logistically cannot pay any more. This will make it less likely for Intellicorp to ask for further monetary concessions. Further the positive Google Review build goodwill between Intellicorp and Steph as will the expressed willingness to return to Intellicorp for future lucrative treatments.</p>
+        </div>
+        
+        <p>If Heath balks, Steph should work with Geoff to draft a letter on Geoff's law firm letterhead more formally threatening a lawsuit. She should draft it to Intellicorp, but copy Heath so that the higher-ups at Intellicorp are more likely to hold him personally responsible for a breakdown in negotiations.</p>
+        
+        <div class="concession">
+            <h3>Concession #4</h3>
+            <p>At this point, Heath will probably call Steph back. Steph should accept an offer by Heath as long as it is 80% of Geoff's target or less. Otherwise, she should use Voss's varied methods of saying "no" and continue taking steps towards litigation until Heath cracks.</p>
+        </div>
+        
+        <p>Here we should note that Heath is likely to crack first. He doesn't want to be responsible for his firm missing out on $10,000 in EV and Wordle at the end of the day does have a greater incentive to settle the dispute than Steph and Geoff who negotiate, rather like their son, for the love of the game.</p>
+    </div>
+</body>
+</html>
